@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+const contentful = require('contentful')
+
+const client = contentful.createClient({
+  space: '6pzomq6z5qlh',
+  environment: 'master', // defaults to 'master' if not set
+  accessToken: 'w01YQyqS94YabnHbzwzVbAS29hYhDyrY9QeVwlcWGnk'
+})
 
 function App() {
+
+  const [contentfulData, setContentfulData] = useState<any>({});
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    client.getEntries()
+    .then((response: any) => {
+      console.log(response.items);
+      setContentfulData(response.items[0].fields);
+      setIsLoading(false);
+    })
+    .catch(console.error)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoading ? (
+        <h1>loading...</h1>
+      ) : (
+        <h1>hello world {contentfulData.title}</h1>
+      )}
     </div>
   );
 }
