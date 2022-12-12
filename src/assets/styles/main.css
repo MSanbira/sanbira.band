@@ -1,0 +1,321 @@
+@layer main {
+
+  :root {
+    --bg-color: #fff;
+    --grey: #C9C9C9;
+    --green: #A2C70F;
+    --black: #2D2D2F;
+    --border-size: max(0.3rem, 2px);
+    --card-min-size: 57rem;
+  }
+
+  html {
+    font-size: 1vmin;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.5;
+    font-weight: 700;
+    background: var(--bg-color);
+    color: var(--black);
+  }
+
+  #root {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    overflow: hidden;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: max(2.8rem, 20px);
+  }
+
+  h2 {
+    font-size: max(3.2rem, 24px);
+  }
+
+  h3 {
+    font-size: max(2rem, 16px);
+    font-weight: 400;
+  }
+
+  h4,
+  p,
+  a {
+    font-size: max(1.6rem, 14px);
+  }
+
+  .app-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100%;
+    overflow: auto;
+  }
+
+  /* header */
+
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-color);
+    grid-column: 1 / -1;
+    padding: max(1.8rem, 16px) max(4.8rem, 16px);
+    border-bottom: var(--border-size) solid var(--black);
+    z-index: 42;
+  }
+
+  header .text-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  header .text-btn:not(:last-child):after {
+    content: '';
+    display: block;
+    width: 1.2em;
+    height: 1em;
+    background: radial-gradient(circle, var(--black) max(0.1em, 1px), #0000 0);
+  }
+
+  /* show dates */
+
+  .show-dates-wrapper {
+    padding: 15rem 7.2rem;
+    border-right: solid var(--border-size) var(--black);
+  }
+
+  .show-dates {
+    position: relative;
+    padding: 10rem 8.8rem;
+    border: solid var(--border-size) var(--green);
+    box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--green);
+    min-height: var(--card-min-size);
+  }
+
+  .show-dates h2 {
+    margin: 0.8rem 0 5.6rem 0;
+  }
+
+  .shows-img {
+    --size: 12.5rem;
+    position: absolute;
+    border: solid var(--border-size) var(--green);
+    box-shadow: calc(var(--border-size) * 2) 0 var(--green);
+    border-radius: calc(var(--border-size) * 2);
+    rotate: 45deg;
+    height: var(--size);
+    width: var(--size);
+    top: calc(var(--size) * -.5);
+    left: calc(50% - var(--size) * .5);
+    overflow: hidden;
+  }
+
+  .shows-img img {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    rotate: -45deg;
+  }
+
+  /* song cards */
+
+  .song-cards-wrapper {
+    --c-1: #F9F9F9;
+    --c-2: #EDEDED;
+    --p-size: max(0.2rem, 3px);
+    --space-factor: 6;
+    --g-size: calc(var(--p-size) * var(--space-factor)) calc(var(--p-size) * 6);
+    background: var(--c-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .song-cards-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 2000%;
+    height: 2000%;
+    top: -1000%;
+    left: -1000%;
+    background:
+      conic-gradient(from 180deg at var(--p-size),
+        var(--c-1) 25%,
+        #0000 0),
+      linear-gradient(90deg, #0000 calc(50% + var(--p-size)), var(--c-2) 0),
+      conic-gradient(var(--c-1) 25%, var(--c-2) 0);
+    background-size: var(--g-size);
+    rotate: 32deg;
+  }
+
+  .song-cards {
+    display: flex;
+    gap: 5.6rem;
+    padding: 15rem 7.2rem 5.6rem 7.2rem;
+    width: 100%;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+  }
+
+  .song-card {
+    position: relative;
+    padding: 10rem 8.8rem;
+    border: solid var(--border-size) var(--grey);
+    box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
+    min-height: var(--card-min-size);
+    background: var(--bg-color);
+    scroll-snap-align: center;
+  }
+
+  .song-card > img {
+    --size: 12.5rem;
+    position: absolute;
+    border: solid var(--border-size) var(--grey);
+    box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
+    border-radius: 50%;
+    height: var(--size);
+    width: var(--size);
+    top: calc(var(--size) * -.5);
+    left: calc(50% - var(--size) * .5);
+  }
+
+  .song-card h2 {
+    margin: 0.8rem 0 5.6rem 0;
+  }
+
+  .listen-link {
+    white-space: nowrap;
+    cursor: pointer;
+    min-width: max-content;
+  }
+
+  .listen-link svg {
+    transition: 0.3s;
+  }
+
+  .listen-link:hover svg {
+    translate: 1em 0;
+    color: var(--green);
+  }
+
+  .nav-songs {
+    padding: 0 7.2rem;
+  }
+
+  .nav-songs button {
+    z-index: 9;
+  }
+
+  .nav-songs button:disabled {
+    color: var(--grey);
+  }
+
+  /* utils */
+
+  .text-btn {
+    text-decoration: underline;
+    transition: 0.3s;
+  }
+
+  .text-btn:hover {
+    color: var(--green);
+  }
+
+  .light {
+    font-weight: 400;
+  }
+
+  .flipped {
+    scale: -1 1;
+  }
+
+  @media only screen and (max-width: 900px) {
+    .app-wrapper {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto minmax(0, 1fr);
+    }
+
+    header a {
+      font-size: 12px;
+    }
+
+    .show-dates-wrapper {
+      padding: unset;
+      border-right: unset;
+    }
+
+    .show-dates {
+      padding: unset;
+      border: unset;
+      box-shadow: unset;
+      min-height: unset;
+    }
+
+    .show-dates-container {
+      display: block;
+      width: 100%;
+    }
+
+    .show-date {
+      padding: 20px 32px;
+      border-bottom: solid var(--border-size) var(--green);
+    }
+
+    .song-cards-wrapper {
+      height: fit-content;
+    }
+
+    .song-cards {
+      flex-direction: column;
+      gap: 56px;
+      padding: 64px 80px;
+      gap: 64px;
+    }
+  
+    .song-card {
+      display: block;
+      padding: 16px 0 0 0;
+      border: solid var(--border-size) var(--grey);
+      box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
+      min-height: unset;
+      background: var(--bg-color);
+      scroll-snap-align: start;
+      text-align: center;
+    }
+  
+    .song-card > img {
+      --size: 100px;
+      left: calc(var(--size) * -.5);
+    }
+  
+    .song-card h2 {
+      margin: 8px 0 16px 0;
+    }
+
+    .listen-links {
+      display: block;
+    }
+  
+    .listen-link {
+      border-top: solid var(--border-size) var(--grey);
+      padding: 24px;
+      justify-content: center;
+    }
+
+    .listen-link svg {
+      display: none;
+    }
+  
+    .hide-on-phone {
+      display: none;
+    }
+  }
+
+}
