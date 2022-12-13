@@ -35,7 +35,7 @@ function App() {
     { ...sc.fields, songArt: getImageUrl(sc.fields?.songArt) }
   ) || []);
 
-  console.log('<<>>', mainLinks, showDates, songCards);
+  console.log('<<contentful>>', mainLinks, showDates, songCards);
 
   if (isLoading) {
     return <h1>loading...</h1>;

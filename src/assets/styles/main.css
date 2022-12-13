@@ -17,6 +17,7 @@
     font-family: "Inter", sans-serif;
     line-height: 1.5;
     font-weight: 700;
+    font-size: max(1.6rem, 16px);
     background: var(--bg-color);
     color: var(--black);
   }
@@ -44,7 +45,8 @@
 
   h4,
   p,
-  a {
+  a,
+  button {
     font-size: max(1.6rem, 14px);
   }
 
@@ -132,7 +134,8 @@
     --p-size: max(0.2rem, 3px);
     --space-factor: 6;
     --g-size: calc(var(--p-size) * var(--space-factor)) calc(var(--p-size) * 6);
-    background: var(--c-2);
+
+    display: grid;
     position: relative;
     overflow: hidden;
   }
@@ -152,16 +155,17 @@
       conic-gradient(var(--c-1) 25%, var(--c-2) 0);
     background-size: var(--g-size);
     rotate: 32deg;
+    z-index: -1;
   }
 
   .song-cards {
+    --inline-padding: 7.2rem;
     display: flex;
     gap: 5.6rem;
-    padding: 15rem 7.2rem 5.6rem 7.2rem;
+    padding: 15rem var(--inline-padding) 3.6rem var(--inline-padding);
     width: 100%;
     overflow: auto;
     scroll-snap-type: x mandatory;
-    scroll-snap-stop: always;
   }
 
   .song-card {
@@ -169,12 +173,13 @@
     padding: 10rem 8.8rem;
     border: solid var(--border-size) var(--grey);
     box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
-    min-height: var(--card-min-size);
+    height: var(--card-min-size);
     background: var(--bg-color);
     scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
-  .song-card > img {
+  .song-card>img {
     --size: 12.5rem;
     position: absolute;
     border: solid var(--border-size) var(--grey);
@@ -190,14 +195,17 @@
     margin: 0.8rem 0 5.6rem 0;
   }
 
+  .listen-links {
+    min-width: max(20rem, 200px);
+  }
+
   .listen-link {
     white-space: nowrap;
     cursor: pointer;
-    min-width: max-content;
   }
 
   .listen-link svg {
-    transition: 0.3s;
+    transition: color 0.3s, translate 0.3s;
   }
 
   .listen-link:hover svg {
@@ -206,7 +214,10 @@
   }
 
   .nav-songs {
-    padding: 0 7.2rem;
+    position: absolute;
+    top: calc(var(--card-min-size) + 10rem + 5.6em);
+    left: var(--inline-padding);
+    right: var(--inline-padding);
   }
 
   .nav-songs button {
@@ -215,13 +226,14 @@
 
   .nav-songs button:disabled {
     color: var(--grey);
+    cursor: default;
   }
 
   /* utils */
 
   .text-btn {
     text-decoration: underline;
-    transition: 0.3s;
+    transition: color 0.3s;
   }
 
   .text-btn:hover {
@@ -278,23 +290,23 @@
       padding: 64px 80px;
       gap: 64px;
     }
-  
+
     .song-card {
       display: block;
       padding: 16px 0 0 0;
       border: solid var(--border-size) var(--grey);
       box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
-      min-height: unset;
+      height: unset;
       background: var(--bg-color);
       scroll-snap-align: start;
       text-align: center;
     }
-  
-    .song-card > img {
+
+    .song-card>img {
       --size: 100px;
       left: calc(var(--size) * -.5);
     }
-  
+
     .song-card h2 {
       margin: 8px 0 16px 0;
     }
@@ -302,17 +314,18 @@
     .listen-links {
       display: block;
     }
-  
+
     .listen-link {
       border-top: solid var(--border-size) var(--grey);
       padding: 24px;
       justify-content: center;
+      width: 100%;
     }
 
     .listen-link svg {
       display: none;
     }
-  
+
     .hide-on-phone {
       display: none;
     }
