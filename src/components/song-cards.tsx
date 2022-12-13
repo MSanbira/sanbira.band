@@ -3,9 +3,7 @@ import { SongCard, SongLinksNames } from "../constants";
 import { Arrow } from "./arrow";
 
 export const SongCards = (props: SongCardsProps) => {
-    const {
-        songCards
-    } = props;
+    const { songCards} = props;
 
     const [scrolled, setScrolled] = useState<number>(0);
 
@@ -33,6 +31,9 @@ export const SongCards = (props: SongCardsProps) => {
             behavior: 'smooth'
         });
     }
+
+    const cardsContainer = document.querySelector('.song-cards') as any;
+    const isHasScroll = cardsContainer?.offsetWidth !== cardsContainer?.scrollWidth;
 
     return (
         <div className="song-cards-wrapper">
@@ -62,7 +63,8 @@ export const SongCards = (props: SongCardsProps) => {
                     )
                 })}
 
-                <div className="nav-songs d-flex-ali-center-jc-sb hide-on-phone">
+                { isHasScroll &&
+                    <div className="nav-songs d-flex-ali-center-jc-sb hide-on-phone">
                     <button
                         className="flipped"
                         disabled={scrolled === 0}
@@ -76,7 +78,7 @@ export const SongCards = (props: SongCardsProps) => {
                     >
                         <Arrow />
                     </button>
-                </div>
+                </div>}
             </div>
         </div>
     )
