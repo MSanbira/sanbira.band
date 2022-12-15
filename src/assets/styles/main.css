@@ -115,6 +115,7 @@
     top: calc(var(--size) * -.5);
     left: calc(50% - var(--size) * .5);
     overflow: hidden;
+    background: var(--green);
   }
 
   .shows-img img {
@@ -189,6 +190,7 @@
     width: var(--size);
     top: calc(var(--size) * -.5);
     left: calc(50% - var(--size) * .5);
+    background: var(--grey);
   }
 
   .song-card h2 {
