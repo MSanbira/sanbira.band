@@ -3,7 +3,7 @@ import { SongCard, SongLinksNames } from "../constants";
 import { Arrow } from "./arrow";
 
 export const SongCards = (props: SongCardsProps) => {
-    const { songCards} = props;
+    const { songCards } = props;
 
     const [scrolled, setScrolled] = useState<number>(0);
 

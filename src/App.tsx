@@ -33,7 +33,7 @@ function App() {
   const showDates = contentfulData?.showDates?.map((sd: any) => sd.fields) || [];
   const songCards = contentfulData?.songCards?.map((sc: any) => (
     { ...sc.fields, songArt: getImageUrl(sc.fields?.songArt) }
-  ) || []);
+  )) || [];
 
   console.log('<<contentful>>', mainLinks, showDates, songCards);
 
