@@ -19,8 +19,11 @@ function App() {
   useEffect(() => {
     client.getEntries()
       .then((response: any) => {
-        console.log(response.items[0].fields);
-        setContentfulData(response.items[0].fields);
+        console.log(response);
+        const homePage = response.items.find(
+          (item: any) => item?.sys?.contentType?.sys?.id === 'homePage'
+        ) || response.items[0];
+        setContentfulData(homePage.fields);
         setIsLoading(false);
       })
       .catch(console.error)
