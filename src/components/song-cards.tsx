@@ -69,12 +69,14 @@ export const SongCards = (props: SongCardsProps) => {
                         className="flipped"
                         disabled={scrolled === 0}
                         onClick={() => scrollCards(-1)}
+                        aria-label="track list back"
                     >
                         <Arrow />
                     </button>
                     <button
                         disabled={scrolled === 2}
                         onClick={() => scrollCards(+1)}
+                        aria-label="track list forward"
                     >
                         <Arrow />
                     </button>
