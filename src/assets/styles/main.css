@@ -6,7 +6,12 @@
     --green: #A2C70F;
     --black: #2D2D2F;
     --border-size: max(0.3rem, 2px);
-    --card-min-size: 57rem;
+
+    --card-p-block: 10rem;
+    --h2-size: max(3.2rem, 24px);
+    --h2-m-block: 6.4rem;
+    --h3-size: max(2rem, 16px);
+    --t-size: max(1.6rem, 14px);
   }
 
   html {
@@ -35,11 +40,11 @@
   }
 
   h2 {
-    font-size: max(3.2rem, 24px);
+    font-size: var(--h2-size);
   }
 
   h3 {
-    font-size: max(2rem, 16px);
+    font-size: var(--h3-size);
     font-weight: 400;
   }
 
@@ -47,16 +52,18 @@
   p,
   a,
   button {
-    font-size: max(1.6rem, 14px);
+    font-size: var(--t-size);
   }
 
   .app-wrapper {
+    --links-height: calc(var(--line-num) * var(--t-size) * 1.5 + (var(--line-num) - 1) * max(2.4rem, 24px));
+    --card-height: calc(var(--card-p-block) * 2 + var(--border-size) * 2 + var(--h2-size) * 1.5 + var(--h2-m-block) + var(--h3-size) * 1.5 + var(--links-height));
     position: relative;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-rows: auto minmax(0, 1fr);
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
 
   /* header */
@@ -89,6 +96,7 @@
   .show-dates-wrapper {
     padding: 15rem 7.2rem;
     border-right: solid var(--border-size) var(--black);
+    overflow: auto;
   }
 
   .show-dates {
@@ -96,7 +104,7 @@
     padding: 10rem 8.8rem;
     border: solid var(--border-size) var(--green);
     box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--green);
-    min-height: var(--card-min-size);
+    min-height: var(--card-height);
   }
 
   .show-dates h2 {
@@ -135,6 +143,7 @@
     --p-size: max(0.2rem, 3px);
     --space-factor: 6;
     --g-size: calc(var(--p-size) * var(--space-factor)) calc(var(--p-size) * 6);
+    --inline-padding: 7.2rem;
 
     display: grid;
     position: relative;
@@ -159,14 +168,21 @@
     z-index: -1;
   }
 
+  .song-cards-container {
+    display: grid;
+    grid-template-rows: calc(var(--card-height) + 18.6rem) 1fr;
+    overflow: auto;
+  }
+
   .song-cards {
-    --inline-padding: 7.2rem;
     display: flex;
     gap: 5.6rem;
     padding: 15rem var(--inline-padding) 3.6rem var(--inline-padding);
     width: 100%;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
   }
 
   .song-card {
@@ -174,7 +190,7 @@
     padding: 10rem 8.8rem;
     border: solid var(--border-size) var(--grey);
     box-shadow: calc(var(--border-size) * 2) calc(var(--border-size) * 2) var(--grey);
-    height: var(--card-min-size);
+    height: var(--card-height);
     background: var(--bg-color);
     scroll-snap-align: center;
     scroll-snap-stop: always;
@@ -211,15 +227,22 @@
   }
 
   .listen-link:hover svg {
-    transform: translateX(1em);
     color: var(--green);
   }
 
+  .listen-link:hover svg.arrow {
+    transform: translateX(1em);
+  }
+
+  .listen-link-logo {
+    width: 1.5em;
+  }
+
   .nav-songs {
-    position: absolute;
-    top: calc(var(--card-min-size) + 10rem + 5.6em);
-    left: var(--inline-padding);
-    right: var(--inline-padding);
+    grid-column: 1 / 2;
+    grid-row: 2 / -1;
+    padding: 3rem var(--inline-padding);
+    align-self: start;
   }
 
   .nav-songs button {
@@ -254,6 +277,7 @@
     .app-wrapper {
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto auto minmax(0, 1fr);
+      overflow: auto;
     }
 
     header a {
@@ -278,7 +302,7 @@
     }
 
     .show-date {
-      padding: 20px 32px;
+      padding: 20px;
       border-bottom: solid var(--border-size) var(--green);
     }
 
@@ -324,7 +348,7 @@
       width: 100%;
     }
 
-    .listen-link svg {
+    .listen-link svg.arrow {
       display: none;
     }
 
