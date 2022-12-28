@@ -52,7 +52,7 @@ export const SongCards = (props: SongCardsProps) => {
                 <img src={songArt} alt={title} />
                 <h3>listen</h3>
                 <h2>{title}</h2>
-                <div className="listen-links d-grid-lg-gap">
+                <div className="listen-links d-grid-md-gap">
                   {Object.keys(SongLinksContent).map((key) => (
                     <ListenLink
                       link={sc[key as keyof SongCard]}
@@ -113,7 +113,7 @@ const ListenLink = (props: {
       target="_blank"
       rel="noreferrer"
     >
-      <div className="d-flex-xs-gap">
+      <div className="d-flex-ali-center-xs-gap">
         {logo}
         <h4>{title}</h4>
       </div>

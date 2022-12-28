@@ -56,7 +56,7 @@
   }
 
   .app-wrapper {
-    --links-height: calc(var(--line-num) * var(--t-size) * 1.5 + (var(--line-num) - 1) * max(2.4rem, 24px));
+    --links-height: calc(var(--line-num) * var(--t-size) * 2.5 + (var(--line-num) - 1) * max(1.6rem, 16px));
     --card-height: calc(var(--card-p-block) * 2 + var(--border-size) * 2 + var(--h2-size) * 1.5 + var(--h2-m-block) + var(--h3-size) * 1.5 + var(--links-height));
     position: relative;
     display: grid;
@@ -94,7 +94,7 @@
   /* show dates */
 
   .show-dates-wrapper {
-    padding: 15rem 7.2rem;
+    padding: 15rem 7.2rem 2rem 7.2rem;
     border-right: solid var(--border-size) var(--black);
     overflow: auto;
   }
@@ -214,7 +214,7 @@
   }
 
   .listen-links {
-    min-width: max(20rem, 200px);
+    min-width: max(22rem, 220px);
   }
 
   .listen-link {
@@ -235,7 +235,7 @@
   }
 
   .listen-link-logo {
-    width: 1.5em;
+    height: 2.5em;
   }
 
   .nav-songs {

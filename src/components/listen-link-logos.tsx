@@ -38,13 +38,13 @@ export const AppleLogo = () => (
 
 export const YoutubeLogo = () => (
   <svg
-    viewBox="0 0 40 32"
+    viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className="listen-link-logo"
   >
     <path
-      d="M16.9336 10.5469L16.9336 21.453L29.4336 15.6408L16.9336 10.5469Z"
+      d="M16.9336 13.1837L16.9336 26.8163L29.4336 19.551L16.9336 13.1837Z"
       fill="currentColor"
     />
   </svg>
@@ -86,6 +86,7 @@ export const DeezerLogo = () => (
 
 export const BandcampLogo = () => (
   <svg
+    viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className="listen-link-logo"
