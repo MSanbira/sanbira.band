@@ -20,7 +20,7 @@ function App() {
     client
       .getEntries()
       .then((response: any) => {
-        console.log(response);
+        // console.log(response);
         const homePage =
           response.items.find(
             (item: any) => item?.sys?.contentType?.sys?.id === "homePage"
@@ -54,7 +54,7 @@ function App() {
     })
   );
 
-  console.log("<<contentful>>", mainLinks, showDates, songCards, maxLinks);
+  // console.log("<<contentful>>", mainLinks, showDates, songCards, maxLinks);
 
   if (isLoading) {
     return <h1>loading...</h1>;
