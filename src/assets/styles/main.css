@@ -164,7 +164,7 @@
       linear-gradient(90deg, #0000 calc(50% + var(--p-size)), var(--c-2) 0),
       conic-gradient(var(--c-1) 25%, var(--c-2) 0);
     background-size: var(--g-size);
-    rotate: 32deg;
+    transform: rotate(32deg);
     z-index: -1;
   }
 
