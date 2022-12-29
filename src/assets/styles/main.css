@@ -339,6 +339,7 @@
 
     .listen-links {
       display: block;
+      min-width: unset;
     }
 
     .listen-link {
